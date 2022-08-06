@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {putTokenOnHeader} from './addToken'
+import {putTokenOnHeader} from './putTokenOnHeader'
 
 // setterFunc Array should include either just the state setter or the
 //  state setter followed by the error setter.
