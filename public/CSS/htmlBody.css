@@ -1,0 +1,41 @@
+html {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  background-color: var(--clr-);
+  background-image: linear-gradient(to bottom, var(--clr-), #FFF);
+  display: flex;
+  justify-content: center;
+}
+
+/* the main Font Family for body has larger than normal text for 16px so my presets for body rem will calculate for 14px base font sizing */
+
+body {
+  font-family: var(--FF1) ;
+  font-size: 16px;
+  color: var(--clr-);
+  background-color: var(--clr-) ;
+  -webkit-font-smoothing: antialiased;
+  -mox-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  width: 100%;
+  max-width: var(--maxWidthBody);
+  box-shadow: 0 0 15px var(--clr-);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (max-width: 40em) {
+  body {
+    width:100vw
+  }
+}

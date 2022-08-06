@@ -1,0 +1,17 @@
+/* import all css files here, in reverse order of dominion */
+
+/* main files with resets, variables and html and body */
+@import "./styles.css";
+@import "./htmlBody.css";
+
+
+/* non component specific such as reusable button styles  */
+
+
+/* fixed components that will be on most/all routes */
+
+
+/* component targeted styles - public */
+
+
+/* component targeted styles - public - admin */
