@@ -1,12 +1,16 @@
 import React from 'react'
-import { MemoryRouter, BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import FrontEndRoutes from './FrontEndRoutes'
+import NavMain from './components/NavMain';
+import Footer from './components/Footer'
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <NavMain />
         <FrontEndRoutes />
+        <Footer />
       </div>
     </BrowserRouter>
   );

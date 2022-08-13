@@ -12,14 +12,9 @@ const express = require('express')
 const morgan = require('morgan')
 const compression = require('compression')  // note to self = read docs about this
 const db = require('./db')
- const PORT = process.env.PORT || require('../package.json').localPort
- const app = express()
+const PORT = process.env.PORT || require('../package.json').localPort
+const app = express()
 
-
- if (process.env.NODE_ENV !== 'production') {
-   const secrets = require('../secrets')
-   process.env.JWT_SIG = secrets.JWT_SIG
- }
 
    // logging middleware
    app.use(morgan('dev'))
@@ -60,7 +55,7 @@ const db = require('./db')
      res.sendFile(path.join(__dirname, '..', 'public/index.html'))
    })
 
-   // error handlers
+   // error handler
    app.use((err, req, res, next) => {
      console.error(err)
      console.error(err.stack)

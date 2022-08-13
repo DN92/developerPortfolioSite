@@ -8,7 +8,9 @@
 /* non component specific such as reusable button styles  */
 
 
-/* fixed components that will be on most/all routes */
+/* static components that will be on most/all routes */
+@import "./header.css";
+@import "./footer.css";
 
 
 /* component targeted styles - public */
