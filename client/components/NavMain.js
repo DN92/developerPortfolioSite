@@ -15,6 +15,7 @@ const NavMain = () => {
         <Link to='/codeSnips'>Code Examples</Link>
         <Link to='/aboutMe'>About Me</Link>
         <Link to='/contact'>Contact</Link>
+        <Link to='/casino'>Games</Link>
         <Link to='/login'>Login</Link>
       </nav>
 

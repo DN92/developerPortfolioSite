@@ -14,11 +14,15 @@ if(process.env.DATABASE_URL) {
         require: true,
         rejectUnauthorized: false
       }
-    }
+    },
+    dialect: "sqlite",
+    storage: "./session.sqlite",
   }
 } else {
   config = {
-    logging: false
+    logging: false,
+    dialect: "sqlite",
+    storage: "./session.sqlite",
   }
 }
 

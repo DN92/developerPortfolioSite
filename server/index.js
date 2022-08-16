@@ -1,86 +1,95 @@
-/**
- * In your development environment, you can keep all of your
- * app's secret API keys in a file called `secrets.js`, in your project
- * root. This file is included in the .gitignore - it will NOT be tracked
- * or show up on Github. On your production server, you can add these
- * keys as environment variables, so that they can still be read by the
- * Node process on process.env
- */
-
-const path = require('path')
 const express = require('express')
-const morgan = require('morgan')
-const compression = require('compression')  // note to self = read docs about this
 const db = require('./db')
-const PORT = process.env.PORT || require('../package.json').localPort
+const session = require('express-session');
+const { Session } = require('./db/models')
+const path = require('path')
+const morgan = require('morgan')
+const compression = require('compression')
 const app = express()
+const PORT = process.env.PORT || require('../package.json').localPort;
+const { v4: uuidv4 } =require('uuid')
+const SessionStore = require('express-session-sequelize')(session.Store)
+const secrets = require('dotenv').config()
+
+// logging middleware
+app.use(morgan('dev'))
+
+//  body parsers
+app.use(express.json());
+// app.use(express.urlencoded());
+
+app.use(
+  session({
+    secret: process.env.EXPRESS_SESSIONS_KEY,
+    store: new SessionStore({
+      db: db,
+      table: Session,
+    }),
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: (1000 * 60 * 60 * 24), // 1 day,
+      httpOnly: true,
+      sameSite: true,
+      secure: app.get('env') === 'production',
+      genid: uuidv4(),
+      name: 'planet-scottish-fold',
+      rolling: true,
+      unset: 'keep',
+    }
+  })
+);
+
+// compression middleware
+app.use(compression())
+
+// api routes
+app.use('/auth', require('./auth'))
+app.use('/api', require('./api'))
+
+// file serving middleware
+app.use(express.static(path.join(__dirname, '..', 'public')))
+
+// send index.html
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'public/index.html'))
+})
 
 
-   // logging middleware
-   app.use(morgan('dev'))
+//  app endpoint
+app.use((req, res, next) => {
+  const error = new Error('Not Found --api index.js')
+  error.status = 404
+  next(error)
+})
 
-   // body parsers
-   app.use(express.json())
-   app.use(express.urlencoded({extended: true}))
+// error handlers
+app.use((err, req, res, next) => {
+  console.error(err)
+  console.error(err.stack)
+  res.status(err.status || 500).send(err.message || 'Endpoint Server Error')
+})
 
-   // compression middleware
-   app.use(compression())
+function bootStartApp() {
+  console.log('create app')
+  if (require.main === module) {
+    return (startServer())
+  }
+}
+
+const startServer = () => {
+  syncDb()
+  // start listening and creates a server object
+  return app.listen(PORT, () => {
+    console.log(`App initializing. Now running on Port ${PORT}`)
+  })
+}
 
 
-   // api routes
-   app.use('/auth', require('./auth'))
-   app.use('/api', require('./api'))
+const syncDb = async () => {
+  await db.sync()
+}
 
-   app.get('/', (req, res)=> {
-     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-   });
+const server = bootStartApp()
 
-   // file serving middleware
-   app.use(express.static(path.join(__dirname, '..', 'public')))
-
-   // remaining requests with an extension (.js, .css, other) send 404
-
-   app.use((req, res, next) => {
-     if (path.extname(req.path).length) {
-       const err = new Error(`File Could not be located: ${req.path}`)
-       err.status = 404
-       next(err)
-     } else {
-       next()
-     }
-   })
-
-   // send index.html
-   app.use('*', (req, res) => {
-     res.sendFile(path.join(__dirname, '..', 'public/index.html'))
-   })
-
-   // error handler
-   app.use((err, req, res, next) => {
-     console.error(err)
-     console.error(err.stack)
-     res.status(err.status || 500).send(err.message || 'Endpoint Server Error')
-   })
-
- const syncDb = async () => {
-   await db.sync()
- }
-
- const startServer = () => {
-   syncDb()
-   // start listening and creates a server object
-   return app.listen(PORT, () => {
-     console.log(`App initializing. Now running on Port ${PORT}`)
-   })
- }
-
- function bootStartApp() {
-   console.log('create app')
-   if (require.main === module) {
-     return (startServer())
-   }
- }
-
- const server = bootStartApp()
-
- module.exports = server
+module.exports = server

@@ -11,6 +11,7 @@ const FrontEndRoutes = () => {
       <Route path='/codeSnips' element={<HomeComponent />} />
       <Route path='/aboutMe' element={<HomeComponent />} />
       <Route path='/contact' element={<HomeComponent />} />
+      <Route path='/casino' element={<HomeComponent />} />
       <Route path='/login' element={<HomeComponent />} />
 
       {/* Redirects */}
