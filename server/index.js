@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const db = require('./db')
 const session = require('express-session');
@@ -6,10 +7,8 @@ const path = require('path')
 const morgan = require('morgan')
 const compression = require('compression')
 const app = express()
-const PORT = process.env.PORT || require('../package.json').localPort;
 const { v4: uuidv4 } =require('uuid')
 const SessionStore = require('express-session-sequelize')(session.Store)
-const secrets = require('dotenv').config()
 
 // logging middleware
 app.use(morgan('dev'))
@@ -80,8 +79,8 @@ function bootStartApp() {
 const startServer = () => {
   syncDb()
   // start listening and creates a server object
-  return app.listen(PORT, () => {
-    console.log(`App initializing. Now running on Port ${PORT}`)
+  return app.listen(process.env.PORT, () => {
+    console.log(`App initializing. Now running on Port ${process.env.PORT}`)
   })
 }
 

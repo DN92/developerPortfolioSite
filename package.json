@@ -1,6 +1,5 @@
 {
-  "name": "template-new-react-1",
-  "localPort": "8082",
+  "name": "my-dev-site",
   "version": "0.1.0",
   "private": true,
   "scripts": {
