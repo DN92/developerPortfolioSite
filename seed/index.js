@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const db = require ('../server/db')
 const models = require('../server/db/models')
 
@@ -6,18 +8,23 @@ const models = require('../server/db/models')
  *    match our models, and populates the database
  */
 
-const {} = models
+const {User} = models
 const modelsArray = [ ... Object.values(models) ]
 
+const usersTestData = require('./testData/usersTest')
+
  async function seed() {
-  console.log('drop all tables')
-  await Promise.all(modelsArray.map(model => (model.drop({force: true}))))
   console.log('sync db')
   await db.sync({force: true})  //  clears the db and matches models to tables
   console.log('begin seed')
   await Promise.all([
     //  import and then ..
     //  seed dummy / actual data here
+
+    Promise.all(usersTestData.map(user => {
+      return User.create(user)
+    }))
+
   ])
 }
 

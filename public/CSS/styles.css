@@ -21,7 +21,6 @@ textarea {
 
 label {
   font-size: var(--fs-400);
-  display: block;
   margin: 0.35rem;
 }
 
@@ -163,6 +162,10 @@ svg {
 
 .table-head-shader {
   background-color: var(--clr-white) !important;
+}
+
+.red {
+  color: red !important
 }
 
 .background-img1 {

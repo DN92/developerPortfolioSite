@@ -1,10 +1,10 @@
+import React from 'react'
+
 Casino = () => {
 
-//   return  (
-//     <div></div>
-//   )
-// }
-// let items = [
-//   { "id": ["ab"] },
-//   { "id": ["cd"] }
-// ];
+  return  (
+    <div></div>
+  )
+}
+
+export default Casino

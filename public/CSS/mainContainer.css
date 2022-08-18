@@ -1,0 +1,9 @@
+.main-container {
+  margin-top: 68px;
+}
+
+@media (min-width: 50em) {
+  .main-container {
+    margin-top: 0;
+  }
+}

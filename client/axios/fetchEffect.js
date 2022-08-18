@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from '../axios'
 import {putTokenOnHeader} from './putTokenOnHeader'
 
 // setterFunc Array should include either just the state setter or the
@@ -28,8 +28,8 @@ export const fetchEffect = async (setterFuncArray, method, path, body,) => {
       setterFuncArray[1]('')
     }
   } catch(err) {
-    console.err(err.message)
-    console.log(error.stack)
+    console.error(err.message)
+    console.log(err.stack)
     if(setterFuncArray.length > 1) {
       setterFuncArray[1](err.message)
     }
