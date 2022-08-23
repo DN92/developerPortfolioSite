@@ -1,0 +1,7 @@
+.iframe-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  background-color: var(--clr-600);
+}

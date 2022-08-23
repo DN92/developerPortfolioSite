@@ -2,6 +2,6 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: beige;
+  background: linear-gradient( to left, var(--clr-200), var(--clr-400) );
   text-align: center;
 }

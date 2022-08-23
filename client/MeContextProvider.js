@@ -1,19 +1,34 @@
-import React from 'react'
-import { createContext, useState} from 'react'
+import React, {useState, useEffect, createContext,} from 'react'
+import { fetchEffect } from './axios/fetchEffect'
 
 const MeContext = createContext()
 
 export const MeProvider = ({children}) => {
 
-  let me = null  // the user
+  const autoLogin = localStorage.hasOwnProperty('autoLogin')
+  const [haveAttemptedLogin, setHaveAttemptedLogin] = useState(false)
+  const [me, setMe] = useState(null)
+  const [email, setEmail] = useState(me?.email)
+  const [type, setType] = useState(me?.type)
+  const [id, setId] = useState(me?.id)
 
-  if (localStorage.hasOwnProperty('autoLogin') && localStorage.hasOwnProperty('me')) {
-    me = JSON.parse(localStorage.getItem('me'))
-  }
+  useEffect(() => {
+    if (autoLogin && !me && !haveAttemptedLogin) {
+      // console.log('attempting login from me provider')
+      setHaveAttemptedLogin(true)
+      fetchEffect(
+        [setMe],
+        'get',
+        `/auth/me`
+      )
+    }
+  }, [])
 
-  const [email, setEmail] = useState(me ? me.email : null)
-  const [type, setType] = useState(me ? me.type : null)
-  const [id, setId] = useState(me ? me.id : null)
+  useEffect(() => {
+    setEmail(me?.email || null)
+    setType(me?.type || null)
+    setId(me?.id || null)
+  }, [me])
 
   return (
     <MeContext.Provider value={{

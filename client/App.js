@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import FrontEndRoutes from './FrontEndRoutes'
+import NavFooterOnly from './components/nav/NavFooterOnly'
 import NavMain from './components/nav/NavMain';
-import LoginComponent from './components/pages/auth/Login';
 import Footer from './components/Footer'
 import { MeProvider } from './MeContextProvider';
 
@@ -11,6 +11,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <MeProvider >
+          <NavFooterOnly />
           <NavMain />
           <FrontEndRoutes />
           <Footer />

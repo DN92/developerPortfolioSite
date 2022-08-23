@@ -70,18 +70,17 @@ svg {
 :root {
   /* COLORS */
 
-  /* base */
-  --clr-400: ;
-  --clr-500: ;
-  --clr-600: ;
-  /* light */
   --clr-100: ;
-  --clr-200: ;
+  --clr-200: 	#fff69f;
   --clr-300: ;
-  /* dark */
+
+  --clr-400: #fdd870;
+  --clr-500: ;
+  --clr-600: #d0902f;
   --clr-700: ;
-  --clr-800: ;
+  --clr-800: 	#a15501;
   --clr-900: ;
+  --clr-1000: #351409;
   /* white black */
   --clr-white: #FFF;
   --clr-black: #000;
@@ -166,6 +165,22 @@ svg {
 
 .red {
   color: red !important
+}
+
+.margin-right-halfRem {
+  margin-right: .5rem;
+}
+
+@media (max-width: 49.9rem) {
+  .wide-view-only {
+    display: none;
+  }
+}
+
+@media (min-width: 50rem) {
+  .thin-view-only {
+    display: none;
+  }
 }
 
 .background-img1 {

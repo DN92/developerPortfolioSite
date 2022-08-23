@@ -24,6 +24,10 @@ const User = db.define("user", {
   },
 })
 
+User.prototype.verifyPassword = async function (candidatePwd) {
+  //we need to compare the plain version to an encrypted version of the password
+  return await bcrypt.compare(candidatePwd, this.password);
+};
 
 
 const hashPassword = async (user) => {
@@ -39,25 +43,25 @@ const emailToLowerCase = async (user) => {
   }
 }
 
-User.beforeCreate((user) => {
-  hashPassword(user);
+User.beforeCreate(async user => {
+  await hashPassword(user);
   emailToLowerCase(user);
 });
-User.beforeUpdate((user) => {
-  hashPassword(user);
+User.beforeUpdate(async user => {
+  await hashPassword(user);
   emailToLowerCase(user);
 });
-User.beforeBulkCreate(users => {
-  users.forEach(user => {
-    hashPassword(user);
+User.beforeBulkCreate(async users => {
+  await Promise.all(users.map(user => {
     emailToLowerCase(user);
-  })
+    return hashPassword(user);
+  }))
 })
-User.beforeBulkUpdate(users => {
-  users.forEach(user => {
-    hashPassword(user);
+User.beforeBulkUpdate(async users => {
+  await Promise.all(users.map(user => {
     emailToLowerCase(user);
-  })
+    return hashPassword(user);
+  }))
 })
 
 module.exports = User

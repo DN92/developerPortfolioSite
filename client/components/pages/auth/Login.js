@@ -1,45 +1,63 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useMemo, useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { fetchEffect } from '../../../axios/fetchEffect'
-import handleFormChange from '../../../eventHandlers/handleFormChange'
 import MeContext from '../../../MeContextProvider'
+import LogoutButtonWrapper from '../../LogoutButton'
+import LoginForm from './LoginForm'
 
 const LoginComponent = () => {
+
+  const {id, email, type} = useContext(MeContext)
+  const {setId, setEmail, setType} = useContext(MeContext)
   const [error, setError] = useState(null)
-  const [loginInfo, setLoginInfo] = useState({
-    email: '',
-    password: '',
-  })
-  const [rememberMe, setRememberMe] = useState(false)
+  const [logoutStatusCode, setLogoutStatusCode] = useState(null)
+  const alreadyLoggedIn = useMemo(()=> (id && email && type), [id, email, type])
 
-  const handleRememberMe = () => {
-    setRememberMe(prevState => {
-      return !prevState
-    })
-  }
-
-  const handleChange = (event) => {
-    handleFormChange(event, setLoginInfo)
-  }
-
-  const handleSubmit = () => {
-    fetchEffect(
-      [setLoginInfo, setError],
-      `post`,
-      `/auth/login`,
-      loginInfo
-    )
-  }
+  // console.log('id, email, type', id, email, type)
+  useEffect(() => {
+    if(logoutStatusCode) {
+      console.log('logout status: ',logoutStatusCode)
+    }
+  }, [logoutStatusCode])
 
   return (
-
     <>
       <div className='login-container'>
-        <p>Why Create an account and log in?</p>
+        <div className='login__wrapper'>
+          {alreadyLoggedIn ?
+            <>
+            <h2 className='login__h2'>'Already logged in as :'</h2>
+            <h2 className='login__h2'>{email}</h2>
+            </>
+            :
+            <h2>Login</h2>
+          }
+          {alreadyLoggedIn &&
+            <div className='buttons-wrapper-two'>
+              <Link to='/home'>
+              <button className='button1'>Home</button>
+              </Link>
+              <LogoutButtonWrapper classNames={['button1']}
+                nullSetters={[setEmail, setId, setType]}
+                statusCodeSetter={setLogoutStatusCode}
+              />
+            </div>
+          }
+          {!alreadyLoggedIn &&
+            <>
+              <LoginForm error={error} setError={setError}/>
+              <div className='login__sign-up'>
+                <p>Don't have an account? </p>
+                <button className='button2'>Sign Up</button>
+              </div>
+            </>
+          }
+        </div>
         <div className='login__description'>
+          <p>Why Create an account and log in?</p>
           <p>Creating an account gets you :</p>
           <ul>
-            <li>A thank you email to your provided email with node mailer (Just One, I promise)</li>
+            <li>An email with my contact info</li>
+            <span> {'\u00A0'}{'\u00A0'}{'\u00A0'} with node mailer (Just One)</span>
             <li>A hashed Password with Bcrypt</li>
             <li>A cookie for your browser from Express Sessions! Yum</li>
             <li>A user id with UUIDV4 from Sequelize</li>
@@ -49,53 +67,6 @@ const LoginComponent = () => {
             <li>And it lets me know someone visited :)</li>
           </ul>
         </div>
-        <h2 className=''>Login</h2>
-        <div >
-          {error && <h6 className='required'>Email or Password is incorrect. Try Again</h6>}
-          <form onSubmit={handleSubmit} onChange={handleChange}>
-            <div className='login__container'>
-              <div className='login__container__div'>
-                <div className='input-labels-wrapper'>
-                  <label htmlFor="eMailLogin" className='required'>Email Address</label>
-                </div>
-                <div className='login__input-wrapper'>
-                  <input id='eMailLogin'
-                    name="email"
-                    type="email"
-                    value={loginInfo.email}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-              </div>
-              <div className='login__container__div'>
-                <div className='input-labels-wrapper'>
-                  <label htmlFor="passwordLogin" className='required'>Password</label>
-
-                    Forgot Password?
-
-                </div>
-                <input id='passwordLogin'
-                  name="password"
-                  type="password"
-                  value={loginInfo.password}
-                  onChange={handleChange}
-                  required
-                />
-              </div>
-              <div className='remMe-wrapper'>
-                <input id='rememberMe' className='auth__remMe__checkbox' onChange={handleRememberMe} type="checkbox" name="rememberMe" checked={rememberMe}/>
-                <label htmlFor="auth__remMe" className='auth__remMe'>Remember Me</label>
-              </div>
-              <div className='login-container__div'>
-                <button id='sign-in-button' className='buttonStyle3' type='submit'>Sign In</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div className='login-wrapper no-account'>
-        <p>Don't have an account? <Link id='signUp-link' to='/signup'>Sign Up</Link></p>
       </div>
     </>
   )

@@ -6,6 +6,8 @@
 
 
 /* non component specific such as reusable button styles  */
+@import "./buttons/index.css";
+@import "./iframe.css";
 
 
 /* static components that will be on most/all routes */
@@ -15,6 +17,8 @@
 
 /* component targeted styles - public */
 @import "./mainContainer.css";
+@import "./login.css";
+@import "./project.css";
 
 
 /* component targeted styles - public - admin */

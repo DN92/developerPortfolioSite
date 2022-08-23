@@ -28,7 +28,8 @@ app.use(
     store: new pgStore({createTableIfMissing: true, pool: pool}),
     resave: false,
     saveUninitialized: false,
-    genid: () => uuidv4,
+    genid: () => uuidv4(),
+    createTableIfMissing: true,
     cookie: {
       maxAge: (1000 * 60 * 60 * 24), // 1 day,
       sameSite: true,

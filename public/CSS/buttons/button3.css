@@ -1,0 +1,24 @@
+.button3 {
+  background-image: linear-gradient(var(--clr-600), var(--clr-400));
+    border: 1px solid var(--clr-800);
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: var(--clr-1000);
+    cursor: pointer;
+    direction: ltr;
+    display: block;
+    /* font-family: "SF Pro Text","SF Pro Icons","AOS Icons","Helvetica Neue",Helvetica,Arial,sans-serif; */
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: -.022em;
+    line-height: 1.47059;
+    min-width: 2rem;
+    overflow: visible;
+    padding: 4px 15px;
+    text-align: center;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+}

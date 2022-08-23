@@ -6,9 +6,12 @@ const Session = db.define("session", {
     type: Sequelize.STRING,
     primaryKey: true,
   },
-  userId: Sequelize.STRING,
-  expires: Sequelize.DATE,
-  data: Sequelize.TEXT,
+  sess: Sequelize.TEXT,
+  expire: Sequelize.DATE,
+},
+{
+  freezeTableName: true,
+  timestamps: false
 });
 
 module.exports = Session
