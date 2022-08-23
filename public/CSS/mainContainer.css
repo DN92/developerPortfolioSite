@@ -18,12 +18,3 @@
     min-height: 100%;
   }
 }
-
-/* @media (min-width: 80rem) {
-  .main-container {
-    margin: 0;
-    margin-right: 15.25rem;
-    width: calc(100% - 15.25rem);
-    min-height: 100%;
-  }
-} */
