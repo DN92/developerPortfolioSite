@@ -90,12 +90,6 @@
     flex-direction: column;
   }
 
-  .nav-main a {
-  }
-
-  .nav-h1-wrapper {
-  }
-
   #nav-main__selected {
     color: white;
     background: linear-gradient(to right , var(--clr-1000), var(--clr-600) 12%, var(--clr-800) 25%, var(--clr-800) 75%, var(--clr-600) 88%, var(--clr-1000) );
