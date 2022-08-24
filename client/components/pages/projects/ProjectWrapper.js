@@ -6,26 +6,46 @@ const ProjectWrapper = ({project}) => {
   project = project ? project : projectTest1
   // project = project ? project : projectTest2
 
-  // "title": "",
-  // "description": "",
-  // "githubUrl": "",
-  // "videoMainUrl": "",
-  // "imageMainSrc": "",
-//  'collaborators: []
-
-  const iFrameSrc = 'https://www.youtube.com/embed/bOf4hEKrt_k'
   return (
     <div className='project-container'>
       <div className='project__header-wrapper'>
         <div className='project-header__title'>{project.title}</div>
         <div className='project-header__links'>
-          <div className='project-link__github'>Github: {project.githubUrl}</div>
-          {project.videoMainUrl && <div className='project-links__youtube'>{project.videoMainUrl}</div>}
+          {!!project.links?.websiteUrl &&
+            <a className='project-link__website'
+              href={ project.websiteUrl }
+              target='_blank'
+            >
+              Deployed Site
+            </a>
+          }
+          {!!project.links?.githubUrl &&
+            <a className='project-link__github'
+              href={project.githubUrl}
+              target="_blank"
+            >
+              Github
+            </a>
+          }
+          {!!project.links?.videoMainUrl &&
+            <a className='project-links__youtube'
+              to={project.videoMainUrl}
+              target='_blank'
+            >
+              Youtube
+            </a>
+          }
         </div>
       </div>
-      <IFrameWrapper classNames={['project-iframe-wrapper']} src={iFrameSrc} title={project.title} />
+      <IFrameWrapper classNames={['project-iframe-wrapper']}
+        style={{backgroundImage: `url(${(project.links?.backgroundImg)})`}}
+        src={project.links?.videoAsEmbed}
+        title={project.title}
+      />
+      {/* project-spacing div is for css only */}
+      <div className='project-spacing1'></div>
       <div className='project-info-wrapper'>
-        <div className='project-info__description'>Description: {project.description}</div>
+        <div className='project-info__description'>{project.description}</div>
         {project.collaborators?.length > 0 &&
         <div className='project-info-collaborators'>
           <p>Collaborators</p>

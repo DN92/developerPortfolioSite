@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <div className='footer-container'>
       <p>This site was built with React, React-Router, Express, Sequelize(PSQL) </p>
-      <button onClick={logMeContext}>log 'me'</button>
+      <button className='button3' onClick={logMeContext}>log 'me'</button>
     </div>
   )
 }

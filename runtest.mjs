@@ -1,4 +1,5 @@
-const data = new Date()
-const now = Date.now()
-console.log('now: ', now)
-console.log('plus 1: ', now +  (1000 * 60 * 60 * 24))
+const string = 'anatoly@gmail.com'
+
+const string2 = string.split('@')[0]
+
+console.log(string.includes('@'))

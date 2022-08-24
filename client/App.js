@@ -6,6 +6,8 @@ import NavMain from './components/nav/NavMain';
 import Footer from './components/Footer'
 import { MeProvider } from './MeContextProvider';
 
+// footer buffer is for CSS only
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +16,7 @@ function App() {
           <NavFooterOnly />
           <NavMain />
           <FrontEndRoutes />
+          <div className='footer-buffer'></div>
           <Footer />
         </MeProvider>
       </div>

@@ -10,6 +10,7 @@ import useWindowSize from '../customHooks/useWindowSize'
 const IFrameWrapper = ({
   classNames = [],
   src,
+  style,
   title = "",
   options = {
     useDefault: true,
@@ -22,15 +23,18 @@ const IFrameWrapper = ({
 
   const windowSize = useWindowSize()
 
-  // if(windowSize) {
-  //   console.log(windowSize)
-  // }
-
   const sizeForIframe = useMemo(() => {
     if(!options.useDefault) {
       return {
         height: options.height,
         width: options.width
+      }
+    }
+
+    if(windowSize.width > 1600) {
+      return {
+        width: '1100',
+        height: '619'
       }
     }
 
@@ -66,15 +70,7 @@ const IFrameWrapper = ({
 
   }, [windowSize])
 
-  useEffect(() => {
-    console.log(sizeForIframe)
-
-
-  }, [sizeForIframe])
-
-
   //  another visual indicator is src was not provided
-
   if(!src) {
     return (
       <div>
@@ -86,7 +82,7 @@ const IFrameWrapper = ({
   }
 
   return (
-    <div className={[classNames.join(' ') + ' ' + 'iframe-wrapper']}>
+    <div className={[classNames.join(' ') + ' ' + 'iframe-wrapper']} style={style}>
       <iframe
         src={src}
         height={sizeForIframe.height}

@@ -2,6 +2,12 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: linear-gradient( to left, var(--clr-200), var(--clr-400) );
+  color: white;
+  background: linear-gradient( 70deg, var(--clr-1000), var(--clr-800) );
+  background-color: var(--clr-1000);
   text-align: center;
+}
+
+.footer-container * {
+  color: white;
 }

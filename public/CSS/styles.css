@@ -84,6 +84,7 @@ svg {
   /* white black */
   --clr-white: #FFF;
   --clr-black: #000;
+  --clr-blue: rgb(17,1,255);
 
   /*Font Families*/
   --FF1: Sans-Serif, Arial;
@@ -173,13 +174,13 @@ svg {
 
 @media (max-width: 49.9rem) {
   .wide-view-only {
-    display: none;
+    display: none !important;
   }
 }
 
 @media (min-width: 50rem) {
   .thin-view-only {
-    display: none;
+    display: none !important;
   }
 }
 
