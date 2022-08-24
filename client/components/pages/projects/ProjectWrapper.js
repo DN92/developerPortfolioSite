@@ -9,7 +9,7 @@ const ProjectWrapper = ({project}) => {
   return (
     <div className='project-container'>
       <div className='project__header-wrapper'>
-        <div className='project-header__title'>{project.title}</div>
+        <h3 className='project-header__title'>{project.title}</h3>
         <div className='project-header__links'>
           {!!project.links?.websiteUrl &&
             <a className='project-link__website'
@@ -48,7 +48,7 @@ const ProjectWrapper = ({project}) => {
         <div className='project-info__description'>{project.description}</div>
         {project.collaborators?.length > 0 &&
         <div className='project-info-collaborators'>
-          <p>Collaborators</p>
+          <h6>Collaborators</h6>
           {project.collaborators.map((person, index) => (
             <div className='project-info__person' key={index}>
               {person}

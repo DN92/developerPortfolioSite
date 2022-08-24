@@ -24,48 +24,53 @@ const IFrameWrapper = ({
   const windowSize = useWindowSize()
 
   const sizeForIframe = useMemo(() => {
-    if(!options.useDefault) {
+
+    if(windowSize.width <= 600) {
+      console.log('window: ', windowSize)
       return {
-        height: options.height,
-        width: options.width
+        width: windowSize.width,
+        height: windowSize.width * 9 / 16
       }
     }
 
-    if(windowSize.width > 1600) {
+    if(!options.useDefault) {
+      return {
+        width: options.width,
+        height: options.height,
+      }
+    }
+
+    if(windowSize.width >= 1600) {
       return {
         width: '1100',
         height: '619'
       }
     }
 
-    if(windowSize.width > 1200) {
+    if(windowSize.width >= 1200) {
       return {
         width: '900',
         height: '506',
       }
     }
 
-    if(windowSize.width > 1000) {
+    if(windowSize.width >= 1000) {
       return {
         width: '700',
         height: '394',
       }
     }
-    if(windowSize.width > 800) {
+    if(windowSize.width >= 800) {
       return {
         width: '600',
         height: '338',
       }
     }
-    if(windowSize.width > 600) {
+    if(windowSize.width >= 600) {
       return {
         width: '500'
   ,     height: '281',
       }
-    }
-    return {
-      width: '364',
-      height: '205'
     }
 
   }, [windowSize])

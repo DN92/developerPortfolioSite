@@ -6,7 +6,7 @@
 }
 
 .header-container__body {
-  background: linear-gradient(var(--clr-1000), var(--clr-800), var(--clr-600), var(--clr-800) , var(--clr-1000));
+  background: linear-gradient(var(--clr-700), var(--clr-500) 16%, var(--clr-300), var(--clr-500) 84%, var(--clr-700));
   height: 4.25rem;
   text-align: center;
   display: flex;
@@ -14,7 +14,7 @@
 }
 
 .header-container__body a {
-  color: var(--clr-black);
+  color: var(--clr-900);
 }
 
 .nav-h1-wrapper {
@@ -37,13 +37,14 @@
 }
 
 #nav-main__selected {
-  color: white;
-  background: linear-gradient(var(--clr-1000), var(--clr-600) 12%, var(--clr-800) 25%, var(--clr-800) 75%, var(--clr-600) 88%, var(--clr-1000) );
+  color: var(--clr-1000);
+  font-weight: bold;
+  background: linear-gradient(var(--clr-700), var(--clr-100) 12%, var(--clr-500) 25%, var(--clr-500) 75%, var(--clr-100) 88%, var(--clr-700) );
 }
 
 
 .nav-footer-container {
-  background: linear-gradient(200deg, #351409 ,#fff69f,  #a15501);
+  background: linear-gradient(200deg, var(--clr-500) ,var(--clr-100), var(--clr-300));
   padding: .3rem 0;
   border-bottom: 2px solid #d0902f;
   display: flex;
@@ -79,7 +80,7 @@
   }
 
   .header-container__body {
-    background: linear-gradient(70deg , var(--clr-1000), var(--clr-800), var(--clr-600), var(--clr-800) , var(--clr-1000));
+    background: linear-gradient(90deg , var(--clr-700), var(--clr-500) 16%, var(--clr-300), var(--clr-500) 84%, var(--clr-700));
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -91,7 +92,8 @@
   }
 
   #nav-main__selected {
-    color: white;
-    background: linear-gradient(to right , var(--clr-1000), var(--clr-600) 12%, var(--clr-800) 25%, var(--clr-800) 75%, var(--clr-600) 88%, var(--clr-1000) );
+    color: var(--clr-1000);
+    font-weight: bold;
+    background: linear-gradient(to right , var(--clr-700), var(--clr-100) 12%, var(--clr-500) 25%, var(--clr-500) 75%, var(--clr-100) 88%, var(--clr-700) );
   }
 }

@@ -69,18 +69,39 @@ svg {
 
 :root {
   /* COLORS */
+  --clr-headers: #e60267;
+  --clr-active: #e60267
+  --clr-buttons-light: #cbe9f8;
 
-  --clr-100: ;
-  --clr-200: 	#fff69f;
-  --clr-300: ;
+  /* COLORS 1 */
+  --clr-100: #eff1f5;
+  --clr-200: #fff69f;
+  --clr-300: #d1e9f7;
 
   --clr-400: #fdd870;
-  --clr-500: ;
+  --clr-500: #bfdff2;
   --clr-600: #d0902f;
-  --clr-700: ;
-  --clr-800: 	#a15501;
-  --clr-900: ;
+  --clr-700: #4433ff;
+  --clr-800: #a15501;
+  --clr-900: #424c54;
   --clr-1000: #351409;
+
+  /* COLORS 2*/
+
+
+  --clr2-100: #eff1f5;
+  --clr2-200: #d1e9f7;
+  --clr2-300: #bfdff2;
+
+  --clr2-400: ;
+  --clr2-500: ;
+  --clr2-600: ;
+  --clr2-700: ;
+  --clr2-800: ;
+  --clr2-900: #424c54 ;
+  --clr2-1000: ;
+
+
   /* white black */
   --clr-white: #FFF;
   --clr-black: #000;
@@ -198,7 +219,8 @@ svg {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--FF2);
   letter-spacing: 0.01em;
-  color: var(--clr- );
+  color: var(--clr-headers) !important;
+  font-weight: bold;
 }
 #h1 {
   font-size: var(--fs-primary- );
@@ -209,14 +231,14 @@ h2{
 }
 
 h3{
-
+  font-size: 2rem;
 }
 
 h4{
-
+  font-size: 1.5rem;
 }
 h5{
-
+  font-size:1rem;
 }
 
 /* h6 will be for errors */

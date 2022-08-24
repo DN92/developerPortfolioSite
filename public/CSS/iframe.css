@@ -4,7 +4,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 3rem;
+  padding: 1rem 3rem;
   background-color: var(--clr-600);
   background-size: auto 110px;
+}
+
+@media (max-width: 600px) {
+  .iframe-wrapper {
+    padding: 0rem 0rem;
+  }
 }
