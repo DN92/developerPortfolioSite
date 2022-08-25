@@ -10,7 +10,7 @@ const User = db.define("user", {
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
   },
-  type: {
+  permissions: {
     type: Sequelize.ENUM(userTypes),
     defaultValue: userTypes[1]
   },

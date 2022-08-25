@@ -8,13 +8,15 @@ const models = require('../server/db/models')
  *    match our models, and populates the database
  */
 
-const {User} = models
-const modelsArray = [ ... Object.values(models) ]
+const {User, Project, Link} = models
 
 const usersTestData = require('./testData/usersTest')
+const projectTestData = require('./testData/projectTest')
+const projectActualData = require('./actualData/projectActual')
 
  async function seed() {
   console.log('sync db')
+  await db.drop({force:true, cascade:true})
   await db.sync({force: true})  //  clears the db and matches models to tables
   console.log('begin seed')
   await Promise.all([
@@ -23,8 +25,12 @@ const usersTestData = require('./testData/usersTest')
 
     Promise.all(usersTestData.map(user => {
       return User.create(user)
+    })),
+    Promise.all(projectActualData.map(async project => {
+      const links = await Link.create(project.links)
+      const newProject = await Project.create(project)
+      await newProject.setLink(links)
     }))
-
   ])
 }
 

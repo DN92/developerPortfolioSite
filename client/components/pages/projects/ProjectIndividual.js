@@ -1,25 +1,26 @@
 import React from 'react'
-import { projectTest1, projectTest2 } from './projectTest'
 import IFrameWrapper from '../../IFrameWrapper'
 
-const ProjectWrapper = ({project}) => {
-  project = project ? project : projectTest1
-  // project = project ? project : projectTest2
+const ProjectIndividual = ({
+  project ={},
+  handlePrev,
+  handleNext,
+}) => {
 
   return (
     <div className='project-container'>
       <div className='project__header-wrapper'>
         <h3 className='project-header__title'>{project.title}</h3>
         <div className='project-header__links'>
-          {!!project.links?.websiteUrl &&
+          {!!project.link?.websiteUrl &&
             <a className='project-link__website'
               href={ project.websiteUrl }
               target='_blank'
             >
-              Deployed Site
+              Website
             </a>
           }
-          {!!project.links?.githubUrl &&
+          {!!project.link?.githubUrl &&
             <a className='project-link__github'
               href={project.githubUrl}
               target="_blank"
@@ -27,7 +28,7 @@ const ProjectWrapper = ({project}) => {
               Github
             </a>
           }
-          {!!project.links?.videoMainUrl &&
+          {!!project.link?.videoMainUrl &&
             <a className='project-links__youtube'
               to={project.videoMainUrl}
               target='_blank'
@@ -37,11 +38,27 @@ const ProjectWrapper = ({project}) => {
           }
         </div>
       </div>
-      <IFrameWrapper classNames={['project-iframe-wrapper']}
-        style={{backgroundImage: `url(${(project.links?.backgroundImg)})`}}
-        src={project.links?.videoAsEmbed}
-        title={project.title}
-      />
+      <div className='project-iframe-container'>
+        <div className='iframe-buttons-wrapper'>
+          <div className='project-last-button'>
+            <button onClick={handlePrev} className='button1'>Back</button>
+          </div>
+          <div className='project-next-button'>
+            <button onClick={handleNext} className='button1'>Next</button>
+          </div>
+        </div>
+        {project.link?.videoAsEmbed ?
+          <IFrameWrapper classNames={['project-iframe-wrapper']}
+            style={{backgroundImage: `url(${(project.link?.backgroundImg)})`}}
+            src={project.link?.videoAsEmbed}
+            title={project.title}
+          />
+          :
+          <div className='project-no-vid-backup'>
+            <img src={project.link?.imageMainSrc} alt="" />
+          </div>
+        }
+      </div>
       {/* project-spacing div is for css only */}
       <div className='project-spacing1'></div>
       <div className='project-info-wrapper'>
@@ -61,4 +78,4 @@ const ProjectWrapper = ({project}) => {
   )
 }
 
-export default ProjectWrapper
+export default ProjectIndividual

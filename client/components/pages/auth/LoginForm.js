@@ -37,7 +37,6 @@ const LoginForm = ({error, setError}) => {
   }
 
   useEffect (() => {
-    console.log("useEffect:user: ", user)
     if(user) {
       writeAutoLoginToLocalStore(rememberMe)
       setEmail(user.email)

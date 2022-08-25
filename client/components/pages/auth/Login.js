@@ -12,13 +12,6 @@ const LoginComponent = () => {
   const [logoutStatusCode, setLogoutStatusCode] = useState(null)
   const alreadyLoggedIn = useMemo(()=> (id && email && type), [id, email, type])
 
-  // console.log('id, email, type', id, email, type)
-  useEffect(() => {
-    if(logoutStatusCode) {
-      console.log('logout status: ',logoutStatusCode)
-    }
-  }, [logoutStatusCode])
-
   return (
     <>
       <div className='login-container'>

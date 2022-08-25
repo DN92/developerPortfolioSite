@@ -26,7 +26,6 @@ const IFrameWrapper = ({
   const sizeForIframe = useMemo(() => {
 
     if(windowSize.width <= 600) {
-      console.log('window: ', windowSize)
       return {
         width: windowSize.width,
         height: windowSize.width * 9 / 16

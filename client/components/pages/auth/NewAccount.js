@@ -61,8 +61,6 @@ const NewAccount = () => {
     rememberMe ?
       localStorage.setItem('autoLogin', true) :
       localStorage.removeItem('autoLogin')
-
-      console.log(localStorage)
   }, [rememberMe])
 
   useEffect(() => {
@@ -85,7 +83,6 @@ const NewAccount = () => {
       setUser(null)
       return
     }
-    console.log('USER: ', user)
     const {type, email, id} = user
     setType(type)
     setEmail(email)

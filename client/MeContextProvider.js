@@ -14,7 +14,6 @@ export const MeProvider = ({children}) => {
 
   useEffect(() => {
     if (autoLogin && !me && !haveAttemptedLogin) {
-      // console.log('attempting login from me provider')
       setHaveAttemptedLogin(true)
       fetchEffect(
         [setMe],

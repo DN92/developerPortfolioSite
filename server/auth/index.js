@@ -56,7 +56,6 @@ router.post('/login', async (req, res, next) => {
 })
 
 router.get('/me', async (req, res, next) => {
-  // console.log("LOGGING SESSION FROM /me: ", req.session)
   try {
     if(!req.session?.user) {
       res.status(401).send({fail: true, msg: 'No User Associated to Session'})
