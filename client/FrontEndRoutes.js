@@ -4,6 +4,7 @@ import HomeComponent from './components/pages/home/Home';
 import LoginComponent from './components/pages/auth/Login';
 import NewAccount from './components/pages/auth/NewAccount';
 import ProjectIndex from './components/pages/projects/ProjectIndex';
+import SnippetsIndex from './components/pages/snippets/SnippetsIndex';
 
 const FrontEndRoutes = () => {
   return (
@@ -14,7 +15,7 @@ const FrontEndRoutes = () => {
       <Route path='/projects'
       element={< ProjectIndex/>}
       />
-      <Route path='/codeSnips' element={<HomeComponent />} />
+      <Route path='/codeSnips' element={<SnippetsIndex />} />
       <Route path='/aboutMe' element={<HomeComponent />} />
       <Route path='/contact' element={<HomeComponent />} />
       <Route path='/casino' element={<HomeComponent />} />

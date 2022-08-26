@@ -3,7 +3,10 @@ const db = require('..')
 
 const Snippet = db.define('snippet', {
   name: Sequelize.STRING,
-  linkToPage: Sequelize.STRING,
+  linkToPage: {
+    type: Sequelize.STRING,
+    defaultValue: ''
+  },
   description: Sequelize.TEXT,
   codeSnippet: Sequelize.TEXT,
   about: Sequelize.TEXT,

@@ -5,9 +5,9 @@ const SnippetIndividual = ({snippet}) => {
 
   return (
     <div className='snippets-row'>
-      <Link to={snippet.linkToPage}>{snippet.name}</Link>
-      <p>{snippet.description}</p>
-      <div>
+      <Link className='snippets-row-1' to={snippet.linkToPage}>{snippet.name}</Link>
+      <p className='snippets-row-2'>{snippet.description}</p>
+      <div className='snippets-row-3'>
         <button>
           LIKE
         </button>

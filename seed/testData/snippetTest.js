@@ -28,4 +28,4 @@ const snippet1 = {
   For maximum performance, you can use a library like React Spring or Framer Motion, which will allow you to update values without triggering React renders. In my experience, though, as long as you're using this hook on smaller components that don't have a big DOM impact, you should be just fine.`,
 }
 
-module.exports = [snippet1]
+module.exports = [snippet1, snippet1, snippet1]

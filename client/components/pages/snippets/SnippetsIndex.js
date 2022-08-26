@@ -17,17 +17,21 @@ const SnippetsIndex = () => {
 
   return (
     <div className='snippets-index'>
-      <h2>Code Snippets</h2>
-      <h3>A couple samples I put a little extra love into</h3>
-      <div className='snippets-header snippets-row'>
-        <span>NAME</span>
-        <span>DESCRIPTION</span>
-        <span>LIKES</span>
+      <div className='snippets__h'>
+        <h3>Code Snippets</h3>
+        <h4>A couple samples I put a little extra love into</h4>
       </div>
-      {snippets.length === 0 && <div>We are having trouble retrieving that information</div>}
-      {snippets.map(snippet => (
-        <SnippetIndividual key={snippet.id} snippet={snippet}/>
-      ))}
+      <div className='snippets-container'>
+        <div className='snippets-header snippets-row'>
+          <span className='snippets-row-1'>NAME</span>
+          <span className='snippets-row-2'>DESCRIPTION</span>
+          <span className='snippets-row-3'>LIKES</span>
+        </div>
+        {snippets.length === 0 && <div>We are having trouble retrieving that information</div>}
+        {snippets.map(snippet => (
+          <SnippetIndividual key={snippet.id} snippet={snippet}/>
+        ))}
+      </div>
     </div>
   )
 }

@@ -4,7 +4,6 @@
   min-height: calc(100vh - 68px);
   position: relative;
 
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +12,7 @@
 @media (min-width: 50em) {
   .main-container {
     margin: 0;
+    margin-top: 42px;
     margin-left: 10.25rem;
     width: calc(100% - 10.25rem);
     min-height: 100%;
