@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { fetchEffect } from '../../../axios/fetchEffect'
 import SnippetIndividual from './SnippetIndividual'
+import { Outlet } from 'react-router-dom'
 
 const SnippetsIndex = () => {
 
@@ -29,9 +30,10 @@ const SnippetsIndex = () => {
         </div>
         {snippets.length === 0 && <div>We are having trouble retrieving that information</div>}
         {snippets.map(snippet => (
-          <SnippetIndividual key={snippet.id} snippet={snippet}/>
+          <SnippetIndividual key={snippet.id} snippet={snippet} />
         ))}
       </div>
+      <Outlet />
     </div>
   )
 }

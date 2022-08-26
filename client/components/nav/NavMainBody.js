@@ -9,7 +9,13 @@ const NavMainBody = () => {
   let location = useLocation();
   const focusedPage = useMemo(() => {
     if(location.pathname.length > 1) {
-      return '.nav-main__' + location.pathname.substring(1, location.pathname.length)
+      const path = location.pathname.substring(1, location.pathname.length)
+      const idx = path.search('/')
+      if (idx === -1) {
+        return '.nav-main__' + path
+      } else {
+        return '.nav-main__' + path.substring(0, idx)
+      }
     }
   }, [location])
 
@@ -42,7 +48,6 @@ const NavMainBody = () => {
         <Link className='nav-main__codeSnips' to='/codeSnips'>{windowWidth > 800 ? 'Code Examples' : 'Code'}</Link>
         <Link className='nav-main__aboutMe' to='/aboutMe'>{windowWidth > 800 ? 'About Me' : 'About'}</Link>
         <Link className='nav-main__contact' to='/contact'>Contact</Link>
-        {/* <Link className='nav-main__games' to='/games'>{windowWidth > 600 ? 'Games' : 'Fun'}</Link> */}
       </nav>
 
     </div>

@@ -5,7 +5,10 @@ const SnippetIndividual = ({snippet}) => {
 
   return (
     <div className='snippets-row'>
-      <Link className='snippets-row-1' to={snippet.linkToPage}>{snippet.name}</Link>
+      <Link className='snippets-row-1'
+        to={`/codeSnips/single/${snippet.id}`}
+        state={{snippet: snippet}}
+      >{snippet.name}</Link>
       <p className='snippets-row-2'>{snippet.description}</p>
       <div className='snippets-row-3'>
         <button>

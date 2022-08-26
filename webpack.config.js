@@ -27,10 +27,6 @@ module.exports = {
         test: /\.svg$/,
         loader: 'icon-maker'
       },
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      }
     ]
   }
 }

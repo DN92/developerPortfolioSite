@@ -10,4 +10,20 @@ router.get('/', async (req, res, next ) => {
   }
 })
 
+router.get('/single', async (req, res, next) => {
+  try {
+    if(!req.query.id) {
+      res.sendStatus(400);
+      return
+    }
+    const snippet = await Snippet.findByPk(req.query.id)
+    console.log("SNIPPET ::: ", snippet)
+    snippet ?
+    res.send(snippet):
+    res.sendStatus(400)
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router
