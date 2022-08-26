@@ -39,13 +39,6 @@ const IFrameWrapper = ({
       }
     }
 
-    if(windowSize.width >= 1600) {
-      return {
-        width: '1100',
-        height: '619'
-      }
-    }
-
     if(windowSize.width >= 1200) {
       return {
         width: '900',

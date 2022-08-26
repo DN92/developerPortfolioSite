@@ -69,7 +69,8 @@ svg {
 
 :root {
   /* COLORS */
-  --clr-headers: #e60267;
+  /* --clr-headers: #e60267; */
+  --clr-headers: #288ba8;
   --clr-active: #e60267
   --clr-buttons-light: #cbe9f8;
 

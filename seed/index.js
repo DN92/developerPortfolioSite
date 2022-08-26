@@ -8,11 +8,12 @@ const models = require('../server/db/models')
  *    match our models, and populates the database
  */
 
-const {User, Project, Link} = models
+const {User, Project, Link, Snippet} = models
 
 const usersTestData = require('./testData/usersTest')
 const projectTestData = require('./testData/projectTest')
 const projectActualData = require('./actualData/projectActual')
+const snippetTestData = require('./testData/snippetTest')
 
  async function seed() {
   console.log('sync db')
@@ -30,6 +31,9 @@ const projectActualData = require('./actualData/projectActual')
       const links = await Link.create(project.links)
       const newProject = await Project.create(project)
       await newProject.setLink(links)
+    })),
+    Promise.all(snippetTestData.map( async snippet => {
+      return Snippet.create(snippet)
     }))
   ])
 }

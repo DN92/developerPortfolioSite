@@ -80,7 +80,7 @@
   }
 
   .header-container__body {
-    background: linear-gradient(90deg , var(--clr-700), var(--clr-500) 16%, var(--clr-300), var(--clr-500) 84%, var(--clr-700));
+    background: linear-gradient(90deg , var(--clr-300), var(--clr-100) 16%, var(--clr-white), var(--clr-100) 84%, var(--clr-300));
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -94,6 +94,6 @@
   #nav-main__selected {
     color: var(--clr-1000);
     font-weight: bold;
-    background: linear-gradient(to right , var(--clr-700), var(--clr-100) 12%, var(--clr-500) 25%, var(--clr-500) 75%, var(--clr-100) 88%, var(--clr-700) );
+    background: linear-gradient(to right , var(--clr-500), var(--clr-100) 12%, var(--clr-500) 25%, var(--clr-500) 75%, var(--clr-100) 88%, var(--clr-500) );
   }
 }
