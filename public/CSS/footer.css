@@ -2,11 +2,6 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  color: white;
-  background: linear-gradient( 70deg, var(--clr-900), var(--clr-700) );
+  background: linear-gradient(20deg, var(--clr-500) ,var(--clr-100), var(--clr-300));var(--clr-700) );
   text-align: center;
-}
-
-.footer-container * {
-  color: white;
 }

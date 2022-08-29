@@ -28,11 +28,11 @@ const NavMainBody = () => {
           child.setAttribute('id', '')
         })
         focusLink.setAttribute('id', 'nav-main__selected')
+      } else {
+        mainNav?.childNodes.forEach(child => {
+          child.setAttribute('id', '')
+        })
       }
-    } else {
-      mainNav?.childNodes.forEach(child => {
-        child.setAttribute('id', '')
-      })
     }
   }, [focusedPage])
 

@@ -15,7 +15,6 @@ const ProjectAll = ({projects}) => {
   const handlePrev = () => {
     const idx = getIndexSelectedProject()
     if(idx === -1) {
-      console.log('missing id in button handler')
       return
     }
     if(idx - 1 < 0) {
@@ -28,7 +27,6 @@ const ProjectAll = ({projects}) => {
   const handleNext = () => {
     const idx = getIndexSelectedProject()
     if(idx === -1) {
-      console.log('missing id in button handler')
       return
     }
     if(idx + 1 >= projects.length) {
@@ -43,10 +41,6 @@ const ProjectAll = ({projects}) => {
       setSelectedProject( projects.find(proj => proj.title == 'Planet Scottish Fold') || projects[0])
     }
   }, [projects])
-
-  useEffect(() => {
-    console.log(selectedProject)
-  }, [selectedProject])
 
   return (
     <>

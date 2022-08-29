@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 
 const SnippetIndividual = ({snippet}) => {
+
+  const [liked, setLiked] = useState(false)
 
   return (
     <div className='snippets-row'>
@@ -11,10 +13,12 @@ const SnippetIndividual = ({snippet}) => {
       >{snippet.name}</Link>
       <p className='snippets-row-2'>{snippet.description}</p>
       <div className='snippets-row-3'>
-        <button>
-          LIKE
-        </button>
-        <span>{snippet.likes}</span>
+          <img className='snippets-thumb'
+            src={liked ? "/pictures/upBlueSelected101.png" : "/pictures/upBnWunselected101.png" }
+            alt={liked ? "thumbs up full" : "thumbs up empty"}
+            onClick={() => {setLiked(prev => !prev)}}
+            />
+            <span>{liked ? snippet.likes + 1 : snippet.likes}</span>
       </div>
     </div>
   )

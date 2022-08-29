@@ -11,7 +11,6 @@ const ProjectIndex = () => {
   const [projects, setProjects] = useState([])
 
   useEffect(()=> {
-
       fetchEffect(
         [setProjects, setError],
         'get',
