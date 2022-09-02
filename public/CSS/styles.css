@@ -197,24 +197,16 @@ svg {
   margin-right: .5rem;
 }
 
-@media (max-width: 49.9rem) {
+@media (max-width: 62.5em) {
   .wide-view-only {
     display: none !important;
   }
 }
 
-@media (min-width: 50rem) {
+@media (min-width: 62.5em) {
   .thin-view-only {
     display: none !important;
   }
-}
-
-.background-img1 {
-
-}
-
-.background-img2 {
-
 }
 
 /* headers */

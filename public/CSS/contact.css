@@ -1,0 +1,56 @@
+
+  .contact-wrapper {
+    background-image: url('/pictures/bridgeTree.gif');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 5rem 0 0 0;
+    position: relative;
+  }
+
+  .contact-info {
+    color: var(--clr-black);
+    min-width: 26%;
+    position: absolute;
+    left: 2rem;
+    top: 1.5rem;
+    background-color: var(--clr-500);
+    border: 1px solid var(--clr-900);
+  }
+
+  .contact-info > p {
+    padding: .5rem;
+  }
+
+  .contact-email {
+    align-self: flex-start;
+  }
+
+  .contact-phone {
+    align-self: flex-end
+  }
+  @media (min-width: 62.5rem) {
+
+  }
+
+  @media (max-width: 501px) {
+    .contact-wrapper {
+      background-image: url('/pictures/treeOfLife.png');
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+
+    .contact-info {
+    color: var(--clr-black);
+    background-color: #118412;
+    min-width: 26%;
+    position: absolute;
+    left: .75rem;
+    top: .75rem;
+    border: none
+  }
+}

@@ -1,0 +1,103 @@
+.aboutMe-wrapper {
+  width: 90%;
+  margin: auto;
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.aboutMe-gif {
+  position: absolute;
+  top: 5rem;
+  width: 96vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.aboutMe-gif img {
+  object-fit: contain;
+}
+
+.aboutMe-header {
+  margin-left: 1rem;
+}
+
+.aboutMe-card1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.aboutMe-card2 {
+  display: flex;
+  width: 100%;
+  min-height: 15rem;
+}
+
+.aboutMe-card2 p {
+  width: 90%;
+  line-height: 2;
+}
+
+.aboutMe-card2 img {
+  min-height: 15rem;
+  border: 2px solid var(--clr-100)
+}
+
+@media (min-width: 62.5em) {
+  .aboutMe-card1 {
+    justify-content: flex-start;
+  }
+
+  .aboutMe-card2 {
+    min-height: none;
+  }
+
+  .aboutMe-card2 img {
+    min-height: none;
+    width: 60%;
+    justify-content: flex-end;
+    margin: 1rem;
+  }
+}
+
+@media (min-width: 90.6rem) {
+  .aboutMe-card2 p {
+    line-height: 3;
+    margin-top: 2rem;
+  }
+}
+
+@media (min-width: 1124px) {
+  .aboutMe-card1 p,
+  .aboutMe-card2 p {
+    line-height: 2.4;
+  }
+
+}
+@media (min-width: 1282px) {
+  .aboutMe-card1 p,
+  .aboutMe-card2 p  {
+    line-height: 3;
+  }
+}
+@media (min-width: 1479px) {
+  .aboutMe-card1 p,
+  .aboutMe-card2 p  {
+    line-height: 4;
+  }
+}
+@media (min-width: 1800px) {
+  .aboutMe-card1 p,
+  .aboutMe-card2 p  {
+    line-height: 5;
+  }
+}

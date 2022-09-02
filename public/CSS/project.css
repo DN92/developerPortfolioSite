@@ -11,10 +11,10 @@
 
 .project-container {
   width: 90%;
-  margin: auto;
+  margin: inherit auto;
   background: linear-gradient( 250deg, var(--clr-100), var(--clr-300) 30%, var(--clr-500) 80%, var(--clr-300));
   background: var(--clr-100);
-  padding: 1.5rem 1.5rem;
+  padding: 0rem 1.5rem;
 }
 
 .project__header-wrapper {

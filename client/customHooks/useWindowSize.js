@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 
 // Custom Hook
 function useWindowSize() {
-  const firstLoad = useRef(true)
   const [windowSize, setWindowSize] = useState({
     width: null,
     height: null,
