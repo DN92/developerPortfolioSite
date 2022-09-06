@@ -30,11 +30,10 @@ const SnippetIndividualFull = () => {
     console.log(snippet)
   }, [snippet])
 
-  materialDark.fontSize = '.5rem'
-
   return  (
     <div className='snips-single'>
       <h4>{snippet.name}</h4>
+      { snippet.linkToPage && <a href={snippet.linkToPage} target='_blank'>See the code in work</a> }
       <p className='snips-single-pre'>{snippet?.aboutPre}</p>
       <div className='snips-single__syntax-highlight'>
         <SyntaxHighlighter id='helloWorld'

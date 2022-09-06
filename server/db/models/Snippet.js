@@ -1,6 +1,10 @@
 const Sequelize = require('sequelize')
 const db = require('..')
 
+const generateRan = (min = 10, max = 100) => {
+  return Math.floor((Math.random()* (max - min) + min))
+}
+
 const Snippet = db.define('snippet', {
   name: Sequelize.STRING,
   linkToPage: {
@@ -13,8 +17,13 @@ const Snippet = db.define('snippet', {
   aboutPost: Sequelize.TEXT,
   likes: {
     type: Sequelize.INTEGER,
-    defaultValue: Math.floor((Math.random()* (100 -10) + 10))
+    defaultValue: 0
   }
+})
+
+
+Snippet.beforeCreate(snippet => {
+  snippet.likes = generateRan()
 })
 
 module.exports = Snippet

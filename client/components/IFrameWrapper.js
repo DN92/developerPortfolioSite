@@ -1,4 +1,4 @@
-import React, {useMemo, useEffect} from 'react'
+import React, { useMemo } from 'react'
 import useWindowSize from '../customHooks/useWindowSize'
 
 //  the options prop default shows the shape of the options obj but the defaulted values should not be used and are set to low values to visually indicate a problem.
@@ -10,13 +10,13 @@ import useWindowSize from '../customHooks/useWindowSize'
 const IFrameWrapper = ({
   classNames = [],
   src,
-  style,
+  style= {},
   title = "",
   options = {
     useDefault: true,
     dimension: {
-      height: '70px',
-      width: '40px'
+      height: '40px',
+      width: '70px'
     }
   }
 }) => {

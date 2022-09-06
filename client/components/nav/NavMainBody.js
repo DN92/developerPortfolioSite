@@ -49,7 +49,6 @@ const NavMainBody = () => {
         <Link className='nav-main__aboutMe' to='/aboutMe'>{windowWidth > 800 ? 'About Me' : 'About'}</Link>
         <Link className='nav-main__contact' to='/contact'>Contact</Link>
       </nav>
-
     </div>
   )
 }
