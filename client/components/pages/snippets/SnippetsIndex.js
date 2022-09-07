@@ -7,7 +7,6 @@ const SnippetsIndex = () => {
 
   const [error, setError] = useState(null)
   const [snippets, setSnippets] = useState([])
-  const [likedSnips, setLikedSnips] = useState([])
   const { liked } = useContext(MeContext)
 
   useEffect(() => {
@@ -17,15 +16,6 @@ const SnippetsIndex = () => {
       '/api/snippets'
     )
   }, [])
-
-  useEffect(() => {
-    console.log('liked form snip index file', liked)
-    setLikedSnips(liked)
-  }, [liked])
-
-  useEffect(() => {
-    console.log('liked Snips ', likedSnips)
-  }, [likedSnips])
 
   return (
     <div className='snippets-index'>
@@ -43,7 +33,7 @@ const SnippetsIndex = () => {
         {snippets.map(snippet => (
           <SnippetIndividual key={snippet.id}
             snippet={snippet}
-            isLiked={likedSnips.includes(snippet.id)}
+            isLiked={liked.includes(snippet.id)}
           />
         ))}
       </div>

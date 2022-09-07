@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useContext } from 'react'
+import React, { useState, useMemo, useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import MeContext from '../../../MeContextProvider'
 import LogoutButtonWrapper from '../../LogoutButton'
@@ -6,11 +6,11 @@ import LoginForm from './LoginForm'
 
 const LoginComponent = () => {
 
-  const {id, email, type} = useContext(MeContext)
-  const {setId, setEmail, setType} = useContext(MeContext)
+  const {id, email, permissions} = useContext(MeContext)
+  const {setId, setEmail, setPermissions} = useContext(MeContext)
   const [error, setError] = useState(null)
   const [logoutStatusCode, setLogoutStatusCode] = useState(null)
-  const alreadyLoggedIn = useMemo(()=> (id && email && type), [id, email, type])
+  const alreadyLoggedIn = useMemo(()=> (id && email && permissions), [id, email, permissions])
 
   return (
     <>
@@ -18,7 +18,7 @@ const LoginComponent = () => {
         <div className='login__wrapper'>
           {alreadyLoggedIn ?
             <>
-            <h2 className='login__h2'>'Already logged in as :'</h2>
+            <h2 className='login__h2'>Already logged in as :</h2>
             <h2 className='login__h2'>{email}</h2>
             </>
             :
@@ -30,7 +30,7 @@ const LoginComponent = () => {
               <button className='button1'>Home</button>
               </Link>
               <LogoutButtonWrapper classNames={['button1']}
-                nullSetters={[setEmail, setId, setType]}
+                nullSetters={[setEmail, setId, setPermissions]}
                 statusCodeSetter={setLogoutStatusCode}
               />
             </div>
@@ -56,7 +56,6 @@ const LoginComponent = () => {
             <li>A user id with UUIDV4 from Sequelize</li>
             <li>A welcome message on the home page</li>
             <br />
-            {/* <li>Some Persistant data storage for your score for any small games on this app</li> */}
             <li>And it lets me know someone visited :)</li>
           </ul>
         </div>

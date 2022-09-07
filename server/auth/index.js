@@ -71,8 +71,8 @@ router.get('/me', async (req, res, next) => {
       res.status(401).send({fail: true, msg: 'Bad Password from session'})
     }
     user.likedSnippets ? user.likedSnippets = JSON.parse(user.likedSnippets) : []
-    const {id, email, type, likedSnippets} = user
-    res.send({id, email, type, likedSnippets})
+    const {id, email, permissions, likedSnippets} = user
+    res.send({id, email, permissions, likedSnippets})
   } catch (err) {
     next(err)
   }

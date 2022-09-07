@@ -9,7 +9,7 @@ export const MeProvider = ({children}) => {
   const [haveAttemptedLogin, setHaveAttemptedLogin] = useState(false)
   const [me, setMe] = useState(null)
   const [email, setEmail] = useState(me?.email)
-  const [type, setType] = useState(me?.type)
+  const [permissions, setPermissions] = useState(me?.permissions)
   const [id, setId] = useState(me?.id)
   const [initialized, setInitialized] = useState(false)
   const [liked, dispatchLiked] = useReducer((state, action) => {
@@ -42,25 +42,21 @@ export const MeProvider = ({children}) => {
 
   useEffect(() => {
     setEmail(me?.email || null)
-    setType(me?.type || null)
+    setPermissions(me?.permissions || null)
     setId(me?.id || null)
-    dispatchLiked({type: 'init'})
+    dispatchLiked({permissions: 'init'})
     setInitialized(true)
   }, [me])
-
-  useEffect(() => {
-    console.log(`liked:: `, liked)
-  }, [liked])
 
   return (
     <MeContext.Provider value={{
       email,
-      type,
+      permissions,
       id,
       liked,
       initialized,
       setEmail,
-      setType,
+      setPermissions,
       setId,
       dispatchLiked,
     }}>

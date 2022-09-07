@@ -8,7 +8,7 @@ const Footer = () => {
   const logMeContext = () => {
     console.log("id: ", meContext.id)
     console.log("email: ", meContext.email)
-    console.log("type:", meContext.type)
+    console.log("permissions:", meContext.permissions)
   }
 
   return (

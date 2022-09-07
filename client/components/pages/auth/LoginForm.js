@@ -1,18 +1,20 @@
-import React, { useState, useEffect, useMemo, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { fetchEffect } from '../../../axios/fetchEffect'
 import handleFormChange from '../../../eventHandlers/handleFormChange'
 import MeContext from '../../../MeContextProvider'
+import { useNavigate } from 'react-router'
 
 const LoginForm = ({error, setError}) => {
 
-  const {id, email, type} = useContext(MeContext)
-  const {setId, setEmail, setType} = useContext(MeContext)
+  const {id, email, permissions} = useContext(MeContext)
+  const {setId, setEmail, setPermissions} = useContext(MeContext)
   const [user, setUser] = useState(null)
   const [rememberMe, setRememberMe] = useState(false)
   const [loginInfo, setLoginInfo] = useState({
     email: '',
     password: '',
   })
+  const navigate = useNavigate()
 
   const handleChange = (event) => {
     handleFormChange(event, setLoginInfo)
@@ -40,8 +42,9 @@ const LoginForm = ({error, setError}) => {
     if(user) {
       writeAutoLoginToLocalStore(rememberMe)
       setEmail(user.email)
-      setType(user.type)
+      setPermissions(user.permissions)
       setId(user.id)
+      navigate('/projects', {replace: true})
     }
   }, [user])
 
