@@ -2,7 +2,6 @@ const Sequelize = require('sequelize')
 const db = require('../../db')
 const { userTypes }= require('../../../myConfig')
 const bcrypt = require('bcryptjs')
-const { v4: uuidv4 } = require('uuid')
 
 const User = db.define("user", {
   id: {
@@ -22,6 +21,10 @@ const User = db.define("user", {
     type: Sequelize.STRING,
     defaultValue: null,
   },
+  likedSnippets: {
+    type: Sequelize.STRING,
+    defaultValue: '',
+  }
 })
 
 User.prototype.verifyPassword = async function (candidatePwd) {
@@ -43,6 +46,16 @@ const emailToLowerCase = async (user) => {
   }
 }
 
+User.beforeValidate(user => {
+  if(Array.isArray(user.likedSnippets)){
+    user.likedSnippets = JSON.stringify(user.likedSnippets)
+  }
+})
+User.beforeUpdate(user => {
+  if(Array.isArray(user.likedSnippets)){
+    user.likedSnippets = JSON.stringify(user.likedSnippets)
+  }
+})
 User.beforeCreate(async user => {
   await hashPassword(user);
   emailToLowerCase(user);

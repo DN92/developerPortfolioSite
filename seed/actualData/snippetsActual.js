@@ -577,6 +577,43 @@ const snippet8 = {
   `
 }
 
+const snippets9 = {
+  name: 'PathTracker',
+  description: 'A makeshift History Stack',
+  aboutPre: 'With React Router v6 no longer providing access to the history object, and the full history stack, some logics are tricky to run. For instance, if you needed to run a database update on a useEffect clean up call with data from a context provider. This would be useful logic to have to convert 20 or more fetches into one. A sample of this components effectiveness can be seen on the snippets liked buttons. Instead of updating the database every time a user clicks a like button, all updates happen in one fetch simultaneously.',
+  codeSnippet: `const PathTracker = ({children}) => {
+
+    const { pathname } = useLocation()
+    const [pathStack, setPathStack] = useState([pathname.toLowerCase()])
+    const { liked, initialized } = useContext(MeContext)
+
+    useEffect(() => {
+      if (!pathStack.length || pathname !== pathStack[pathStack.length - 1]) {
+        setPathStack(prev => [...prev, pathname.toLowerCase()])
+      }
+    }, [pathname])
+
+    useEffect(() => {
+      if(pathStack[pathStack.length - 1] === '/codesnips' && initialized) {
+        fetchEffect(
+          [],
+          'post',
+          '/api/users/updateLikes',
+          liked
+        );
+      }
+    }, [pathname])
+
+    return (
+      <>
+        {children}
+      </>
+    )
+  }
+
+  export default PathTracker`
+}
+
 const snippets = [snippet1, snippet2, snippet3, snippet4, snippet5, snippet6, snippet7, snippet8]
 
 module.exports = snippets

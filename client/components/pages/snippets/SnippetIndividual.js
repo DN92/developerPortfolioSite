@@ -1,10 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import LikeButton from '../../LikeButtons'
 
-const SnippetIndividual = ({snippet}) => {
-
-  const [liked, setLiked] = useState(false)
+const SnippetIndividual = ({snippet, isLiked}) => {
 
   return (
     <>
@@ -14,10 +12,10 @@ const SnippetIndividual = ({snippet}) => {
             to={`/codeSnips/single/${snippet.id}`}
             state={{snippet: snippet}}
           >{snippet.name}</Link>
-          <LikeButton classNames={['snippets-row-3', 'hide-over-600']} state={liked} setter={setLiked} counter={snippet.likes} />
+          <LikeButton classNames={['snippets-row-3', 'hide-over-600']} isLiked={isLiked} snippet={snippet} />
         </div>
         <p className='snippets-row-2'>{snippet.description}</p>
-        <LikeButton classNames={['snippets-row-3', 'hide-under-600']} state={liked} setter={setLiked} counter={snippet.likes} />
+        <LikeButton classNames={['snippets-row-3', 'hide-under-600']} isLiked={isLiked} snippet={snippet} />
       </div>
       <hr className='snippets-divider hide-under-600'/>
     </>

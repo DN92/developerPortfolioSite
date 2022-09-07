@@ -70,8 +70,9 @@ router.get('/me', async (req, res, next) => {
     if(!passwordVerified) {
       res.status(401).send({fail: true, msg: 'Bad Password from session'})
     }
-    // const {id, email, type} = user
-    res.send(user)
+    user.likedSnippets ? user.likedSnippets = JSON.parse(user.likedSnippets) : []
+    const {id, email, type, likedSnippets} = user
+    res.send({id, email, type, likedSnippets})
   } catch (err) {
     next(err)
   }

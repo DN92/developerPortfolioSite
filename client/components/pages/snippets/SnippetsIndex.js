@@ -1,12 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { fetchEffect } from '../../../axios/fetchEffect'
 import SnippetIndividual from './SnippetIndividual'
-import { Outlet } from 'react-router-dom'
+import MeContext from '../../../MeContextProvider'
 
 const SnippetsIndex = () => {
 
   const [error, setError] = useState(null)
   const [snippets, setSnippets] = useState([])
+  const [likedSnips, setLikedSnips] = useState([])
+  const { liked } = useContext(MeContext)
 
   useEffect(() => {
     fetchEffect(
@@ -15,6 +17,15 @@ const SnippetsIndex = () => {
       '/api/snippets'
     )
   }, [])
+
+  useEffect(() => {
+    console.log('liked form snip index file', liked)
+    setLikedSnips(liked)
+  }, [liked])
+
+  useEffect(() => {
+    console.log('liked Snips ', likedSnips)
+  }, [likedSnips])
 
   return (
     <div className='snippets-index'>
@@ -30,10 +41,12 @@ const SnippetsIndex = () => {
         </div>
         {snippets.length === 0 && <div>We are having trouble retrieving that information</div>}
         {snippets.map(snippet => (
-          <SnippetIndividual key={snippet.id} snippet={snippet} />
+          <SnippetIndividual key={snippet.id}
+            snippet={snippet}
+            isLiked={likedSnips.includes(snippet.id)}
+          />
         ))}
       </div>
-      <Outlet />
     </div>
   )
 }

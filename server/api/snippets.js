@@ -26,4 +26,21 @@ router.get('/single', async (req, res, next) => {
   }
 })
 
+router.post('/updateLikes', async (req, res, next) => {
+  try {
+    console.log('PASSED ALL CHECKS IN UPDATE LIKES')
+    Promise.all(req.body.map(async snippet => {
+      const fromDb = Snippet.findByPk(snippet.id)
+      if(Math.abs(fromDb.likes - snippet.likes) < 2) {
+        Snippet.upsert({
+          id: snippet.id,
+          likes: Number(snippet.likes),
+        })
+      }
+    }))
+  } catch (err) {
+    next(err)
+  }
+})
+
 module.exports = router

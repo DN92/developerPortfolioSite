@@ -37,10 +37,11 @@ const SnippetIndividualFull = () => {
       <p className='snips-single-pre'>{snippet?.aboutPre}</p>
       <div className='snips-single__syntax-highlight'>
         <SyntaxHighlighter id='helloWorld'
-        language="javascript"
-        style={materialDark}
-        wrapLongLines={true}>
-          {snippet?.codeSnippet}
+          language="javascript"
+          style={materialDark}
+          wrapLongLines={true}
+        >
+        {snippet?.codeSnippet}
         </SyntaxHighlighter>
       </div>
       <p className='snips-single-post'>{snippet?.aboutPost}</p>
