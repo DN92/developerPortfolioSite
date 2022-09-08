@@ -1,10 +1,23 @@
 import React, {useMemo, useEffect} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import useWindowSize from '../../customHooks/useWindowSize'
+import useMousePosition from '../../customHooks/useMousePosition'
+import EyeBall from './EyeBall'
 
 const NavMainBody = () => {
 
   const {width : windowWidth} = useWindowSize();
+  const mousePosition = useMousePosition()
+
+  // const colorCode1 = useMemo(() => {
+  //   return Math.floor(Math.abs(181 - mousePosition.x % 20 )) % 255
+  // }, [mousePosition.x])
+  // const colorCode2 = useMemo(() => {
+  //   return Math.floor(Math.abs(213 + mousePosition.y % 20)) % 255
+  // }, [mousePosition.y])
+  // const colorCode3 = useMemo(() => {
+  //   return Math.floor(Math.abs(232 + (mousePosition.x * 0.1 * mousePosition.y * 0.1) % 20 )) % 255
+  // }, [mousePosition.x, mousePosition.y])
 
   let location = useLocation();
   const focusedPage = useMemo(() => {
@@ -18,6 +31,10 @@ const NavMainBody = () => {
       }
     }
   }, [location])
+
+  // useEffect(() => {
+  //   console.log(colorCode1, colorCode2, colorCode3)
+  // }, [mousePosition])
 
   useEffect(() => {
     const mainNav = document.querySelector('.nav-main')
@@ -38,10 +55,15 @@ const NavMainBody = () => {
 
   return (
     <div className='header-container__body'>
-      <div className='nav-h1-wrapper'>
-        <Link to='/home'>
-          <h1 id='h1'>Title Here</h1>
-        </Link>
+      <div className='nav-h1-wrapper' style ={{
+        // background: `rgb(${colorCode1},${colorCode2},${colorCode3})`
+      }}>
+        <EyeBall />
+        <h1 style={{
+          // color: `rgb(${colorCode1},${colorCode2},${colorCode3})`,
+          // background: `linear-gradient(rgb(${colorCode1},${colorCode2},${colorCode3}), rgb(${colorCode2},${colorCode3},${colorCode1}))`
+          }}
+          id='h1'>Anatoly Tsinker</h1>
       </div>
       <nav className='nav-main'>
         <Link className='nav-main__projects' to='/projects'>Projects</Link>

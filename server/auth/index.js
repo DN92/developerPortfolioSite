@@ -13,9 +13,9 @@ router.post('/signup', async (req, res, next) => {
     }
     const user = await User.create(req.body)
     if(user) {
-      req.session.user = { user_id: user.id, email: user.email, type: user.type}
-      const {id, type, email} = user
-      res.send({id, type, email})
+      req.session.user = { user_id: user.id, email: user.email, permissions: user.permissions}
+      const {id, permissions, email} = user
+      res.send({id, permissions, email})
     }
 
   } catch (error) {
@@ -42,11 +42,11 @@ router.post('/login', async (req, res, next) => {
       req.session.user = {
         user_id: user.id,
         email: user.email,
-        type: user.type,
+        permissions: user.permissions,
         password: req.body.password
       }
-      const {id, email, type} = user
-      res.send({id, email, type});
+      const {id, email, permissions} = user
+      res.send({id, email, permissions});
       return
     }
     res.send({msg: 'password Incorrect, BEGONE'})
@@ -61,9 +61,9 @@ router.get('/me', async (req, res, next) => {
       res.status(401).send({fail: true, msg: 'No User Associated to Session'})
       return
     }
-    const user = await User.findByPk(req.session.user.user_id)
+    const user = await User.findByPk(req.session.user?.user_id)
     if(!user) {
-      res.status(400).send({fail: true, msg: `No User with id:${req.session.user.user_id} found in database`})
+      res.status(400).send({fail: true, msg: `No User with id:${req.session.user?.user_id} found in database`})
       return
     }
     const passwordVerified = await user.verifyPassword(req.session.user.password)

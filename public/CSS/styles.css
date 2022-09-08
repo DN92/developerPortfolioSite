@@ -81,7 +81,7 @@ svg {
   --clr-300: #d1e9f7;
 
   --clr-400: #fdd870;
-  --clr-500: #bfdff2;
+  --clr-500: rgb(191, 223, 242);
   --clr-600: #d0902f;
   --clr-700: #4433ff;
   --clr-750: #2c0a8e;
@@ -238,17 +238,24 @@ svg {
   }
 }
 
+@media (max-height: 524px) {
+  .wide-height-only {
+    display: none;
+  }
+}
+
 /* headers */
 
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--FF2);
   letter-spacing: 0.01em;
-  color: var(--clr-headers) !important;
+  color: var(--clr-headers) ;
   font-weight: bold;
 }
 #h1 {
   font-size: var(--fs-primary- );
+  transform: translateY(50%);
 }
 
 h2{

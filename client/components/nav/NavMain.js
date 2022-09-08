@@ -1,5 +1,4 @@
-import React, {useMemo, useEffect} from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React from 'react'
 import NavMainBody from './NavMainBody'
 import NavFooter from './NavFooter'
 

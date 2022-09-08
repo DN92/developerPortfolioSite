@@ -13,8 +13,7 @@ const FrontEndRoutes = () => {
   return (
     <div className='main-container'>
     <Routes>
-      <Route path='/' element={<HomeComponent />} />
-      <Route path='home' element={<HomeComponent />} />
+      <Route path='/' element={<ProjectIndex />} />
       <Route path='projects'element={<ProjectIndex />} />
       <Route path='codeSnips' element={<SnippetsIndex />} />
       <Route path='codeSnips/single/:id' element={<SnippetIndividualFull />} />

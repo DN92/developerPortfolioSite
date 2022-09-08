@@ -16,7 +16,7 @@ router.post('/updateLikes', async (req, res, next) => {
     if(!Array.isArray(req.body)) {
       throw Error('updateLikes expects an array, instead got ' + typeof req.body)
     }
-    const user = await User.findByPk(req.session.user.user_id)
+    const user = await User.findByPk(req.session.user?.user_id)
     if(!user) {
       res.sendStatus(401)
       return
