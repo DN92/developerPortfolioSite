@@ -6,12 +6,14 @@ import NavMain from './components/nav/NavMain';
 import Footer from './components/Footer'
 import { MeProvider } from './MeContextProvider';
 import PathTracker from './components/PathTracker';
+import X from './components/JustATest';
 
 // footer buffer is for CSS only
 
 function App() {
   return (
     <BrowserRouter>
+      < X />
       <div className="App">
         <MeProvider >
           <NavFooterOnly />
